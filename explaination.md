@@ -19,7 +19,7 @@ Our code teaches a computer robot how to play this game!
 
 ---
 
-## 🧠 File 1: [ANN_lab1.ipynb](file:///Users/mastersam/Documents/5BDA/ANN&DL/code/ANN_lab1.ipynb) (The Simple Toy Robot)
+## 🧠 File 1: [ANN_lab1.ipynb](./ANN_lab1.ipynb) (The Simple Toy Robot)
 
 This file builds a very simple robot brain from scratch. It is called a **Perceptron**.
 
@@ -47,7 +47,7 @@ Imagine a little robot sitting at a table. He has:
 
 ---
 
-## 🔢 File 2: [ANN_lab2.ipynb](file:///Users/mastersam/Documents/5BDA/ANN&DL/code/ANN_lab2.ipynb) (The Dimmer-Switch Robot)
+## 🔢 File 2: [ANN_lab2.ipynb](./ANN_lab2.ipynb) (The Dimmer-Switch Robot)
 
 In this file, we don't train a robot. Instead, we manually set the volumes and grumpiness ourselves and see how a different switch called a **Sigmoid** works.
 
@@ -84,7 +84,7 @@ Let's see what happens inside the robot's head for each input:
 
 ---
 
-## ⚡ File 3: [ANN_lab3.ipynb](file:///Users/mastersam/Documents/5BDA/ANN&DL/code/ANN_lab3.ipynb) (The Robot Team)
+## ⚡ File 3: [ANN_lab3.ipynb](./ANN_lab3.ipynb) (The Robot Team)
 
 This file uses a big library called **TensorFlow/Keras** to build a team of robots working together. This is a **Feedforward Neural Network**.
 
@@ -102,7 +102,7 @@ Instead of one single robot cell, we have three rows of robots:
 
 ---
 
-## 📖 The User Manual: [README.md](file:///Users/mastersam/Documents/5BDA/ANN&DL/code/README.md)
+## 📖 The User Manual: [README.md](./README.md)
 
 ### What is the README?
 The `README.md` is the **Main Map** of the project. It is written for older students and teachers. It contains:

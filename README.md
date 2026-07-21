@@ -1,7 +1,13 @@
 # Artificial Neural Networks (ANN) & Deep Learning Lab
 ## Comprehensive Viva Preparation Guide: Labs 1, 2, and 3
 
-This repository contains a single Jupyter Notebook [ANN_lab1,2,3.ipynb](file:///Users/mastersam/Documents/5BDA/ANN&DL/code/ANN_lab1,2,3.ipynb) demonstrating the evolution of neural networks from a single Perceptron built from scratch to a manual single-neuron forward-pass model, and finally to a Feedforward Neural Network (FNN) built with TensorFlow/Keras. All three labs use the logical **AND gate** as the dataset.
+This repository contains the Jupyter Notebooks demonstrating the evolution of neural networks from a single Perceptron built from scratch to a manual single-neuron forward-pass model, and finally to a Feedforward Neural Network (FNN) built with TensorFlow/Keras:
+- Combined Notebook: [ANN_lab1,2,3.ipynb](file:///Users/mastersam/Documents/5BDA/ANN&DL/code/ANN_lab1,2,3.ipynb)
+- Individual Lab 1 Notebook: [ANN_lab1.ipynb](file:///Users/mastersam/Documents/5BDA/ANN&DL/code/ANN_lab1.ipynb)
+- Individual Lab 2 Notebook: [ANN_lab2.ipynb](file:///Users/mastersam/Documents/5BDA/ANN&DL/code/ANN_lab2.ipynb)
+- Individual Lab 3 Notebook: [ANN_lab3.ipynb](file:///Users/mastersam/Documents/5BDA/ANN&DL/code/ANN_lab3.ipynb)
+
+All three labs use the logical **AND gate** as the dataset.
 
 Use this README as your complete study guide for the viva. It covers the underlying theory, mathematical formulas, manual step-by-step calculations, line-by-line code explanations, and a curated list of expected viva questions.
 
@@ -33,7 +39,7 @@ The notebook demonstrates three distinct paradigms of implementing neural networ
 
 ```mermaid
 graph TD
-    A[ANN_lab1,2,3.ipynb] --> B[Lab 1: Perceptron from Scratch]
+    A["Repository Notebooks<br>(ANN_lab1,2,3.ipynb / Individual Files)"] --> B[Lab 1: Perceptron from Scratch]
     A --> C[Lab 2: Manual Neuron Forward Pass]
     A --> D[Lab 3: Keras MLP Classifier]
     

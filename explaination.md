@@ -10,10 +10,10 @@ Before we look at the files, we need to know what game our computer brains (netw
 
 Imagine you have two friends: **Left Hand** and **Right Hand**. You will only give them a cookie if **BOTH** hands are raised.
 
-* 🛑 Left Hand Down (0), Right Hand Down (0) $\rightarrow$ **No Cookie (0)**
-* 🛑 Left Hand Down (0), Right Hand Up (1) $\rightarrow$ **No Cookie (0)**
-* 🛑 Left Hand Up (1), Right Hand Down (0) $\rightarrow$ **No Cookie (0)**
-* 🍪 Left Hand Up (1), Right Hand Up (1) $\rightarrow$ **Cookie (1)**
+* 🛑 Left Hand Down (0), Right Hand Down (0) -> **No Cookie (0)**
+* 🛑 Left Hand Down (0), Right Hand Up (1) -> **No Cookie (0)**
+* 🛑 Left Hand Up (1), Right Hand Down (0) -> **No Cookie (0)**
+* 🍪 Left Hand Up (1), Right Hand Up (1) -> **Cookie (1)**
 
 Our code teaches a computer robot how to play this game!
 
@@ -55,7 +55,7 @@ In this file, we don't train a robot. Instead, we manually set the volumes and g
 Instead of a sharp ON/OFF light switch, this robot has a **Dimmer Switch (Sigmoid)**.
 - If the score is negative, the light is dim (closer to 0).
 - If the score is positive, the light is bright (closer to 1).
-- It tells us "how sure" the robot is (e.g., $0.57$ means "I am 57% sure the answer is YES").
+- It tells us "how sure" the robot is (e.g., 0.57 means "I am 57% sure the answer is YES").
 
 ### How the Robot Thinks (Step-by-Step Hand Math):
 We set:
@@ -66,19 +66,19 @@ We set:
 Let's see what happens inside the robot's head for each input:
 
 1. **Both Hands Down `[0, 0]`**
-   - Head Score = $(0 \times 0.5) + (0 \times 0.5) - 0.7 = \mathbf{-0.7}$
+   - Head Score = (0 * 0.5) + (0 * 0.5) - 0.7 = -0.7
    - Dimmer Switch (Sigmoid) output = **0.3318** (33% bright).
    - *Result:* 33% is less than 50% (halfway), so the robot outputs **Class 0 (No)**.
 2. **One Hand Up `[0, 1]`**
-   - Head Score = $(0 \times 0.5) + (1 \times 0.5) - 0.7 = \mathbf{-0.2}$
+   - Head Score = (0 * 0.5) + (1 * 0.5) - 0.7 = -0.2
    - Dimmer Switch output = **0.4502** (45% bright).
    - *Result:* 45% is less than 50%, so the robot outputs **Class 0 (No)**.
 3. **Other Hand Up `[1, 0]`**
-   - Head Score = $(1 \times 0.5) + (0 \times 0.5) - 0.7 = \mathbf{-0.2}$
+   - Head Score = (1 * 0.5) + (0 * 0.5) - 0.7 = -0.2
    - Dimmer Switch output = **0.4502** (45% bright).
    - *Result:* 45% is less than 50%, so the robot outputs **Class 0 (No)**.
 4. **Both Hands Up `[1, 1]`**
-   - Head Score = $(1 \times 0.5) + (1 \times 0.5) - 0.7 = \mathbf{0.3}$ (Finally positive!)
+   - Head Score = (1 * 0.5) + (1 * 0.5) - 0.7 = 0.3 (Finally positive!)
    - Dimmer Switch output = **0.5744** (57% bright).
    - *Result:* 57% is more than 50%, so the robot outputs **Class 1 (Yes)**.
 
@@ -106,7 +106,7 @@ Instead of one single robot cell, we have three rows of robots:
 
 ### What is the README?
 The `README.md` is the **Main Map** of the project. It is written for older students and teachers. It contains:
-1. **Mathematical Equations:** The official math symbols ($\sum, \sigma, e^{-z}$) that represent the logic we explained above.
+1. **Mathematical Equations:** The math symbols (like sum, sigma, e^-z) that represent the logic we explained above.
 2. **Step-by-Step Tables:** Showing how the calculations work.
 3. **The Q&A Section:** A list of 21 questions and answers explaining common terms like "Vanishing Gradient," "learning rate," "activation functions," and "overfitting."
 
@@ -118,5 +118,5 @@ The `README.md` is the **Main Map** of the project. It is written for older stud
 * **Weights:** How loud an input is. Bigger weight = more important input.
 * **Bias:** Natural grumpiness or eagerness. A positive bias means the neuron is eager to say YES. A negative bias means it wants to say NO.
 * **Epoch:** One full run through the study guide (dataset). 500 epochs means reading the study guide 500 times.
-* **Overfitting:** When a robot memorizes the exact training questions instead of learning the actual rules. (Like memorizing that $2 + 2 = 4$ but not knowing how to add $3 + 2$).
+* **Overfitting:** When a robot memorizes the exact training questions instead of learning the actual rules. (Like memorizing that 2 + 2 = 4 but not knowing how to add 3 + 2).
 * **Backpropagation:** The process of the boss robot telling the middle robots "Hey, we got it wrong, let's trace back who had their volume set incorrectly and fix it."

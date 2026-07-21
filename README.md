@@ -12,7 +12,7 @@ All three labs use the logical **AND gate** as the dataset.
 
 > [!NOTE]
 > For a very simple version with stories and analogies, check out the [Explaination Guide](./explaination.md).
-> 
+>
 > [!TIP]
 > For a line-by-line detailed explanation of the code in each notebook, check out the [Code Explanations Guide](./code_explanations.md).
 
@@ -130,7 +130,7 @@ A **Perceptron** is the simplest form of a neural network, introduced by Frank R
 
 ---
 
-## 🔢 Lab 2: Single Neuron Forward Pass (Sigmoid)
+## 🔢 Lab 2: Single Neuron Forward Pass
 
 ### Lab 2: Conceptual Foundations
 
@@ -148,12 +148,12 @@ Using these fixed parameters from the lab:
 
 Here is how the neuron processes each input of the AND gate:
 
-| Input ($x_1, x_2$) | Weighted Sum ($z$)                                      | Sigmoid Formula Output ($\frac{1}{1 + e^{-z}}$) | Final Prediction (Is Output $\ge 0.5$?) |
-| :----------------- | :------------------------------------------------------ | :---------------------------------------------- | :-------------------------------------- |
-| **[0, 0]**         | $(0 \times 0.5) + (0 \times 0.5) - 0.7 = \mathbf{-0.7}$ | $\frac{1}{1 + e^{0.7}} = \mathbf{0.3318}$       | **0** (since $0.3318 < 0.5$)            |
-| **[0, 1]**         | $(0 \times 0.5) + (1 \times 0.5) - 0.7 = \mathbf{-0.2}$ | $\frac{1}{1 + e^{0.2}} = \mathbf{0.4502}$       | **0** (since $0.4502 < 0.5$)            |
-| **[1, 0]**         | $(1 \times 0.5) + (0 \times 0.5) - 0.7 = \mathbf{-0.2}$ | $\frac{1}{1 + e^{0.2}} = \mathbf{0.4502}$       | **0** (since $0.4502 < 0.5$)            |
-| **[1, 1]**         | $(1 \times 0.5) + (1 \times 0.5) - 0.7 = \mathbf{0.3}$  | $\frac{1}{1 + e^{-0.3}} = \mathbf{0.5744}$      | **1** (since $0.5744 \ge 0.5$)          |
+| Input (x1, x2) | Weighted Sum (z) | Sigmoid Formula Output | Final Prediction (Is Output >= 0.5?) |
+| :--- | :--- | :--- | :--- |
+| **[0, 0]** | (0 * 0.5) + (0 * 0.5) - 0.7 = -0.7 | 1 / (1 + e^0.7) = 0.3318 | **0** (since 0.3318 < 0.5) |
+| **[0, 1]** | (0 * 0.5) + (1 * 0.5) - 0.7 = -0.2 | 1 / (1 + e^0.2) = 0.4502 | **0** (since 0.4502 < 0.5) |
+| **[1, 0]** | (1 * 0.5) + (0 * 0.5) - 0.7 = -0.2 | 1 / (1 + e^0.2) = 0.4502 | **0** (since 0.4502 < 0.5) |
+| **[1, 1]** | (1 * 0.5) + (1 * 0.5) - 0.7 = 0.3 | 1 / (1 + e^-0.3) = 0.5744 | **1** (since 0.5744 >= 0.5) |
 
 ### Lab 2: Code Breakdown
 
@@ -164,7 +164,7 @@ Here is how the neuron processes each input of the AND gate:
       return 1 / (1 + np.exp(-x))
   ```
 
-  Applies the mathematical sigmoid formula to squash the score into a decimal range of $(0, 1)$.
+  Applies the mathematical sigmoid formula to squash the score into a decimal range between 0 and 1.
 
 - **Inference Loop**:
 
@@ -183,7 +183,7 @@ Here is how the neuron processes each input of the AND gate:
 
 ---
 
-## ⚡ Lab 3: Feedforward Neural Network (TensorFlow/Keras)
+## ⚡ Lab 3: Feedforward Neural Network (TensorFlow)
 
 ### Lab 3: Conceptual Foundations
 
@@ -209,15 +209,15 @@ Our network architecture is built as follows:
 
 Trainable parameters are the individual weights and biases that the network learns.
 
-- **Input Layer to Hidden Layer**:
-  - Weights: $2 \text{ inputs} \times 4 \text{ hidden neurons} = 8$ weights.
-  - Biases: $1 \text{ bias per hidden neuron} = 4$ biases.
-  - Subtotal = $8 + 4 = 12$ parameters.
-- **Hidden Layer to Output Layer**:
-  - Weights: $4 \text{ hidden neurons} \times 1 \text{ output neuron} = 4$ weights.
-  - Biases: $1 \text{ bias per output neuron} = 1$ bias.
-  - Subtotal = $4 + 1 = 5$ parameters.
-- **Total Parameters**: $12 + 5 = 17$ trainable parameters.
+* **Input Layer to Hidden Layer**:
+  - Weights: 2 inputs * 4 hidden neurons = 8 weights.
+  - Biases: 1 bias per hidden neuron = 4 biases.
+  - Subtotal = 8 + 4 = 12 parameters.
+* **Hidden Layer to Output Layer**:
+  - Weights: 4 hidden neurons * 1 output neuron = 4 weights.
+  - Biases: 1 bias per output neuron = 1 bias.
+  - Subtotal = 4 + 1 = 5 parameters.
+* **Total Parameters**: 12 + 5 = 17 trainable parameters.
 
 ### Lab 3: Loss & Optimizers Made Simple
 
@@ -240,7 +240,7 @@ Trainable parameters are the individual weights and biases that the network lear
 
   - `Sequential`: Builds the network layer-by-layer.
   - `Input(shape=(2,))`: Tells the model to expect 2 inputs per sample.
-  - `Dense(4, activation='relu')`: Creates a hidden layer of 4 fully connected neurons using the **ReLU** activation function. ReLU ($f(x) = \max(0, x)$) passes positive values through and turns negative values to 0. This speeds up training.
+  - `Dense(4, activation='relu')`: Creates a hidden layer of 4 fully connected neurons using the **ReLU** activation function. ReLU passes positive values through and turns negative values to 0. This speeds up training.
   - `Dense(1, activation='sigmoid')`: Creates an output layer with 1 neuron using the **Sigmoid** activation function to output a probability between 0 and 1.
 
 - **Compiling the Model**:
@@ -277,9 +277,9 @@ Trainable parameters are the individual weights and biases that the network lear
 
 **Answer:** A Perceptron is the earliest and simplest type of neural network. It was invented by Frank Rosenblatt in 1958. It takes inputs, multiplies them by weights, adds a bias, and passes them through a sharp ON/OFF step function to output `0` or `1`.
 
-### Q3: What is the purpose of the bias ($b$)?
+### Q3: What is the purpose of the bias (b)?
 
-**Answer:** The bias helps shift the activation function. Without a bias, the decision boundary line would always have to pass through the origin $(0,0)$, which severely limits the patterns the neuron can learn.
+**Answer:** The bias helps shift the activation function. Without a bias, the decision boundary line would always have to pass through the origin (0,0), which severely limits the patterns the neuron can learn.
 
 ### Q4: Why can a Perceptron solve an AND gate but not an XOR gate?
 
@@ -288,9 +288,8 @@ Trainable parameters are the individual weights and biases that the network lear
 ### Q5: Can you explain visually why a single Perceptron cannot solve XOR?
 
 **Answer:** If you plot the inputs of an XOR gate on a 2D plane:
-
-- $(0,0)$ and $(1,1)$ output `0`.
-- $(0,1)$ and $(1,0)$ output `1`.
+- (0,0) and (1,1) output `0`.
+- (0,1) and (1,0) output `1`.
   The zeros and ones are diagonally opposite each other. You cannot draw a single straight line that groups all the zeros on one side and all the ones on the other.
 
 ### Q6: Why do we initialize weights to zeros in Lab 1? Is zero initialization always okay?
@@ -298,7 +297,7 @@ Trainable parameters are the individual weights and biases that the network lear
 **Answer:** In a single Perceptron, initializing weights to zero is fine because there is only one neuron. As soon as it makes a mistake, the weights will update.
 However, in **deep multi-layer networks**, if we initialize all weights to zero, all neurons in a layer will learn the exact same features. Therefore, deep networks require random initialization (like Xavier or He initialization) to break symmetry.
 
-### Q7: What is the learning rate ($\eta$)? What happens if it is too high or too low?
+### Q7: What is the learning rate (eta)? What happens if it is too high or too low?
 
 **Answer:** The learning rate controls how big of a step the optimizer takes when adjusting weights.
 
@@ -315,19 +314,19 @@ However, in **deep multi-layer networks**, if we initialize all weights to zero,
 
 ### Q9: Why is the Step function not used in modern backpropagation?
 
-**Answer:** Backpropagation relies on derivatives (calculus) to adjust weights. The derivative of a step function is zero everywhere (except at $0$ where it is undefined). A derivative of zero means there is no signal to tell the network how to adjust the weights, stopping learning entirely.
+**Answer:** Backpropagation relies on derivatives (calculus) to adjust weights. The derivative of a step function is zero everywhere (except at 0 where it is undefined). A derivative of zero means there is no signal to tell the network how to adjust the weights, stopping learning entirely.
 
 ### Q10: What is the "vanishing gradient" problem?
 
-**Answer:** In deep networks, gradients are multiplied backward through layers. Because the derivative of the Sigmoid function is very small (always $0.25$ or less), multiplying these small values layer-by-layer causes the gradient to shrink exponentially to zero. As a result, the early layers of the network learn extremely slowly or stop training.
+**Answer:** In deep networks, gradients are multiplied backward through layers. Because the derivative of the Sigmoid function is very small (always 0.25 or less), multiplying these small values layer-by-layer causes the gradient to shrink exponentially to zero. As a result, the early layers of the network learn extremely slowly or stop training.
 
 ### Q11: Explain how we got the output of 0.5744 for input [1,1] in Lab 2.
 
-**Answer:**
+**Answer:** 
 
-1. We compute the score: $(1 \times 0.5) + (1 \times 0.5) - 0.7 = 0.3$.
-2. We pass $0.3$ into the Sigmoid formula: $\frac{1}{1 + e^{-0.3}} \approx 0.5744$.
-3. Since $0.5744$ is greater than or equal to $0.5$, the final prediction is `1`.
+1. We compute the score: (1 * 0.5) + (1 * 0.5) - 0.7 = 0.3.
+2. We pass 0.3 into the Sigmoid formula: 1 / (1 + e^-0.3) = 0.5744.
+3. Since 0.5744 is greater than or equal to 0.5, the final prediction is `1`.
 
 ### Q12: Why does Lab 3 use a hidden layer if an AND gate can be solved by a single neuron?
 
@@ -335,19 +334,19 @@ However, in **deep multi-layer networks**, if we initialize all weights to zero,
 
 ### Q13: What does the code `Input(shape=(2,))` mean in Keras?
 
-**Answer:** It defines the input layer, telling Keras that the network should expect inputs with 2 features (for example, $x_1$ and $x_2$ of our gate).
+**Answer:** It defines the input layer, telling Keras that the network should expect inputs with 2 features (for example, x1 and x2 of our gate).
 
 ### Q14: How many trainable parameters are in the Keras model of Lab 3? Show the breakdown.
 
 **Answer:** **17 parameters**:
 
-- **Input to Hidden (4 neurons)**: $(2 \text{ inputs} \times 4 \text{ neurons}) + 4 \text{ biases} = 12$ parameters.
-- **Hidden to Output (1 neuron)**: $(4 \text{ inputs} \times 1 \text{ neuron}) + 1 \text{ bias} = 5$ parameters.
-- **Total**: $12 + 5 = 17$.
+- **Input to Hidden (4 neurons)**: (2 inputs * 4 neurons) + 4 biases = 12 parameters.
+- **Hidden to Output (1 neuron)**: (4 inputs * 1 neuron) + 1 bias = 5 parameters.
+- **Total**: 12 + 5 = 17.
 
 ### Q15: Why is Binary Cross-Entropy used as the loss function instead of Mean Squared Error (MSE) in Lab 3?
 
-**Answer:** Binary Cross-Entropy penalizes wrong answers exponentially when the model is confident. If the model predicts $0.99$ probability for a true label of $0$, BCE gives a very high penalty. This creates steep gradients that help the model learn much faster than MSE, which gets stuck on flat parts of the Sigmoid curve.
+**Answer:** Binary Cross-Entropy penalizes wrong answers exponentially when the model is confident. If the model predicts 0.99 probability for a true label of 0, BCE gives a very high penalty. This creates steep gradients that help the model learn much faster than MSE, which gets stuck on flat parts of the Sigmoid curve.
 
 ### Q16: What is the Adam optimizer, and why is it popular?
 

@@ -88,7 +88,7 @@ for sample in X:
 7. **`X = np.array([...])` and `y = np.array([0, 0, 0, 1])`**
    - Defines the inputs and targets for the **logical AND gate**. The target `y` is only `1` when both inputs are `1`.
 8. **`perceptron = Perceptron(input_size=2)`**
-   - Creates a Perceptron instance with 2 input features (representing $x_1$ and $x_2$).
+   - Creates a Perceptron instance with 2 input features (representing x1 and x2).
 9. **`perceptron.train(X, y, epochs=10)`**
    - Runs the training loop for 10 rounds to adjust the weights and bias.
 10. **`print(...)` and inference loop**
@@ -139,8 +139,8 @@ for x in X:
 1. **`import numpy as np`**
    - Imports NumPy for array structures and vectorized mathematical functions.
 2. **`def sigmoid(x):`**
-   - Implements the sigmoid activation function: $\sigma(x) = \frac{1}{1 + e^{-x}}$. 
-   - `np.exp(-x)` computes $e^{-x}$ for the input value. The sigmoid squashes any score into a continuous range between `0` and `1`, representing confidence/probability.
+   - Implements the sigmoid activation function: sigmoid(x) = 1 / (1 + e^-x).
+   - `np.exp(-x)` computes e^-x for the input value. The sigmoid squashes any score into a continuous range between 0 and 1, representing confidence/probability.
 3. **`X = np.array([...])`**
    - Sets up the four combinations of inputs for the AND gate dataset.
 4. **`weights = np.array([0.5, 0.5])` and `bias = -0.7`**
@@ -149,8 +149,8 @@ for x in X:
    - Starts a loop to feed each of the four input samples through the neuron.
 6. **`z = np.dot(x, weights) + bias`**
    - Computes the weighted sum of inputs and weights, then adds the bias:
-     - For `[0, 0]`, $z = (0 \times 0.5) + (0 \times 0.5) - 0.7 = -0.7$.
-     - For `[1, 1]`, $z = (1 \times 0.5) + (1 \times 0.5) - 0.7 = 0.3$.
+     - For `[0, 0]`, z = (0 * 0.5) + (0 * 0.5) - 0.7 = -0.7.
+     - For `[1, 1]`, z = (1 * 0.5) + (1 * 0.5) - 0.7 = 0.3.
 7. **`output = sigmoid(z)`**
    - Passes the score `z` to the sigmoid function to get a decimal output (probability). For example, `sigmoid(0.3)` is approximately `0.5744`.
 8. **`prediction = 1 if output >= 0.5 else 0`**

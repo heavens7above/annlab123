@@ -14,7 +14,7 @@ All three labs use the logical **AND gate** as the dataset.
 > For a very simple version with stories and analogies, check out the [Explaination Guide](./explaination.md).
 >
 > [!TIP]
-> For a line-by-line detailed explanation of the code in each notebook, check out the [Code Explanations Guide](./code_explanations.md).
+> For a line-by-line detailed explanation of the code in each notebook, check out the [Code Explanations Guide](./codex.md).
 
 ---
 
